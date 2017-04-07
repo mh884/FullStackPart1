@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace FullStackPart1
+namespace gig
 {
     public class BundleConfig
     {

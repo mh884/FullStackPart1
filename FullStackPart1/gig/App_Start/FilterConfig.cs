@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace FullStackPart1
+namespace gig
 {
     public class FilterConfig
     {

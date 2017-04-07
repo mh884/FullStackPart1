@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace FullStackPart1.Controllers
+namespace gig.Controllers
 {
     public class HomeController : Controller
     {
