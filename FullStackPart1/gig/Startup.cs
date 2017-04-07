@@ -1,8 +1,9 @@
-﻿using Microsoft.Owin;
+﻿using GigHub;
+using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(gig.Startup))]
-namespace gig
+[assembly: OwinStartup(typeof(Startup))]
+namespace GigHub
 {
     public partial class Startup
     {
