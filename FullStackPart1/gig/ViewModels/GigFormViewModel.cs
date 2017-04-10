@@ -1,21 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using GigHub.Models;
 
 namespace GigHub.ViewModels
 {
     public class GigFormViewModel
     {
+        [Required]
         public string Venue { get; set; }
+        [Required]
+        [FutureDate]
         public string Date { get; set; }
+        [Required]
+        [FutureTime]
         public string Time { get; set; }
+        [Required]
         public byte Genre { get; set; }
 
         public IEnumerable<Genre> Genres { get; set; }
 
-        public DateTime DateTime
+        public DateTime GetDateTime()
         {
-            get { return DateTime.Parse($"{Date} {Time}"); }
+            return DateTime.Parse($"{Date} {Time}");
 
         }
     }
