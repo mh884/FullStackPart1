@@ -21,3 +21,28 @@
 input,
 select,
 textarea { max-width: 280px; }
+
+/*BootStrap custom changes*/
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    background-color: rgba(51, 122, 183, 1)
+}
+.navbar-brand {font-weight: 700}
+body{ font-size: 17px;}
+
+body,h1,h2,h3,h4,h5,h6 {
+    font-family: Lato,"Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.form-group { margin-bottom: 20px; }
+.form-control {
+    font-size: 17px;
+    padding: 20px 15px;
+    -ms-border-radius: 9px;
+    border-radius: 9px;
+}
+
+.btn{ font-size: 17px;
+    padding: 7px 22px;
+    border-radius: 9px;
+}
