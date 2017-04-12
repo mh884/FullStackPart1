@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using GigHub.Models;
+using GigHub.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -66,7 +67,7 @@ namespace GigHub.Controllers
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new {ReturnUrl = returnUrl, model.RememberMe});
+                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, model.RememberMe });
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
@@ -82,7 +83,7 @@ namespace GigHub.Controllers
             // Require that the user has already logged in via username/password or external login
             if (!await SignInManager.HasBeenVerifiedAsync())
                 return View("Error");
-            return View(new VerifyCodeViewModel {Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe});
+            return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
 
         //
@@ -131,7 +132,7 @@ namespace GigHub.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser {UserName = model.Email, Email = model.Email};
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Name = model.Name };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -248,7 +249,7 @@ namespace GigHub.Controllers
         {
             // Request a redirect to the external login provider
             return new ChallengeResult(provider,
-                Url.Action("ExternalLoginCallback", "Account", new {ReturnUrl = returnUrl}));
+                Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
         }
 
         //
@@ -260,7 +261,7 @@ namespace GigHub.Controllers
             if (userId == null)
                 return View("Error");
             var userFactors = await UserManager.GetValidTwoFactorProvidersAsync(userId);
-            var factorOptions = userFactors.Select(purpose => new SelectListItem {Text = purpose, Value = purpose})
+            var factorOptions = userFactors.Select(purpose => new SelectListItem { Text = purpose, Value = purpose })
                 .ToList();
             return View(new SendCodeViewModel
             {
@@ -284,7 +285,7 @@ namespace GigHub.Controllers
             if (!await SignInManager.SendTwoFactorCodeAsync(model.SelectedProvider))
                 return View("Error");
             return RedirectToAction("VerifyCode",
-                new {Provider = model.SelectedProvider, model.ReturnUrl, model.RememberMe});
+                new { Provider = model.SelectedProvider, model.ReturnUrl, model.RememberMe });
         }
 
         //
@@ -305,14 +306,14 @@ namespace GigHub.Controllers
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new {ReturnUrl = returnUrl, RememberMe = false});
+                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = false });
                 case SignInStatus.Failure:
                 default:
                     // If the user does not have an account, then prompt the user to create an account
                     ViewBag.ReturnUrl = returnUrl;
                     ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
                     return View("ExternalLoginConfirmation",
-                        new ExternalLoginConfirmationViewModel {Email = loginInfo.Email});
+                        new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
             }
         }
 
@@ -333,7 +334,7 @@ namespace GigHub.Controllers
                 var info = await AuthenticationManager.GetExternalLoginInfoAsync();
                 if (info == null)
                     return View("ExternalLoginFailure");
-                var user = new ApplicationUser {UserName = model.Email, Email = model.Email};
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
@@ -429,7 +430,7 @@ namespace GigHub.Controllers
 
             public override void ExecuteResult(ControllerContext context)
             {
-                var properties = new AuthenticationProperties {RedirectUri = RedirectUri};
+                var properties = new AuthenticationProperties { RedirectUri = RedirectUri };
                 if (UserId != null)
                     properties.Dictionary[XsrfKey] = UserId;
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
