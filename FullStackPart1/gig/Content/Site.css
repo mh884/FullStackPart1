@@ -48,8 +48,10 @@ body,h1,h2,h3,h4,h5,h6 {
     border-radius: 9px;
 }
 
-.btn{ font-size: 17px;
-    padding: 7px 22px;
+.btn {
+    /*font-size: 17px;
+    padding: 7px 22px;*/
+    -ms-border-radius: 9px;
     border-radius: 9px;
 }
 
@@ -70,6 +72,7 @@ body,h1,h2,h3,h4,h5,h6 {
     position: absolute;
     top: 0px;
     left: 70px;
+    width: 135px;
 }
 .gigs > li .details .artist {
 
