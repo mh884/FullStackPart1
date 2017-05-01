@@ -123,14 +123,15 @@ namespace GigHub.Controllers
                 ViewModel.Genres = _context.Genres.ToList();
                 return View("GigForm", ViewModel);
             }
+
             var userid = User.Identity.GetUserId();
-            var gig = _context.Gigs.Single(g => g.id == ViewModel.id && g.ArtistID == userid);
-
-            gig.Venue = ViewModel.Venue;
-            gig.DateTime = ViewModel.GetDateTime();
-            gig.GenreID = ViewModel.Genre;
 
 
+            var gig = _context.Gigs
+                .Include(u => u.Attendance.Select(a => a.Attendee))
+                .Single(g => g.id == ViewModel.id && g.ArtistID == userid);
+
+            gig.update(ViewModel);
 
             _context.SaveChanges();
 
