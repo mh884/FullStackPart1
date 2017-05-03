@@ -34,12 +34,12 @@ namespace GigHub.Models
             Type = notificationType;
         }
 
-        private Notification(gig gig, NotificationType notificationType, DateTime ODateTime, string OVenue)
+        private Notification(gig gig, NotificationType notificationType, DateTime orginalDateTime, string orginalVenue)
         {
             DateTime = DateTime.Now;
             Gig = gig ?? throw new ArgumentNullException(nameof(gig));
-            OrginalDateTime = ODateTime;
-            OrginalVenue = OVenue;
+            OrginalDateTime = orginalDateTime;
+            OrginalVenue = orginalVenue;
             Type = notificationType;
         }
 
@@ -48,12 +48,12 @@ namespace GigHub.Models
             return new Notification(gig, NotificationType.GigCreate);
 
         }
-        public static Notification GigUpdate(gig Newgig, DateTime OrginalDateTime, string OrginalVenue)
+        public static Notification GigUpdate(gig newgig, DateTime orginalDateTime, string orginalVenue)
         {
-            var notification = new Notification(Newgig, NotificationType.GigCreate)
+            var notification = new Notification(newgig, NotificationType.GigCreate)
             {
-                OrginalDateTime = OrginalDateTime,
-                OrginalVenue = OrginalVenue
+                OrginalDateTime = orginalDateTime,
+                OrginalVenue = orginalVenue
             };
             return notification;
         }

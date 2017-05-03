@@ -131,7 +131,7 @@ namespace GigHub.Controllers
                 .Include(u => u.Attendance.Select(a => a.Attendee))
                 .Single(g => g.id == ViewModel.id && g.ArtistID == userid);
 
-            gig.update(ViewModel);
+            gig.Modify(ViewModel);
 
             _context.SaveChanges();
 

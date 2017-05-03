@@ -36,7 +36,7 @@ namespace GigHub.Models
             Attendance = new Collection<Attendance>();
         }
 
-        public void cancel()
+        public void Cancel()
         {
             Iscanceled = true;
 
@@ -50,7 +50,7 @@ namespace GigHub.Models
         }
 
 
-        public void update(GigFormViewModel viewModel)
+        public void Modify(GigFormViewModel viewModel)
         {
 
             var notification = Notification.GigUpdate(this, DateTime, Venue);
