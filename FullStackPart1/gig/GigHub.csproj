@@ -206,7 +206,7 @@
     <Compile Include="Dto\GenreDto.cs" />
     <Compile Include="Dto\gigDto.cs" />
     <Compile Include="Controllers\API\GigsController.cs" />
-    <Compile Include="Controllers\API\NotificationController.cs" />
+    <Compile Include="Controllers\API\NotificationsController.cs" />
     <Compile Include="Dto\NotificationDto.cs" />
     <Compile Include="Dto\UserDto.cs" />
     <Compile Include="Controllers\GigsController.cs" />
@@ -277,6 +277,7 @@
     <Compile Include="ViewModels\VerifyCodeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\animate.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -301,6 +302,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\underscore-min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

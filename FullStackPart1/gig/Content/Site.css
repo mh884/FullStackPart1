@@ -42,6 +42,15 @@ span.field-validation-error {
     background-color: rgba(51, 122, 183, 1)
 }
 .navbar-brand {font-weight: 700}
+
+.navbar-inverse .notification {
+    position: relative;
+}
+    .navbar-inverse .notification .badge {
+        position: absolute;
+        top: 8px;
+        right: -1px;
+    }
 body{ font-size: 17px;}
 
 body,h1,h2,h3,h4,h5,h6 {
