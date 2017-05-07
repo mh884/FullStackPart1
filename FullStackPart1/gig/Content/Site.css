@@ -1,123 +1,162 @@
 ﻿body {
-    padding-bottom: 20px;
-    padding-top: 90px;
+  padding-bottom: 20px;
+  padding-top: 90px;
+  font-size: 17px;
+  font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-
-/* Set padding to keep content from hitting the edges */
-
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
-
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-
-.dl-horizontal dt { white-space: normal; }
-
-/* Set width on the form input elements since they're 100% wide by default */
-
-input,
-select,
-textarea { max-width: 280px; }
-
-
+.dl-horizontal dt {
+  white-space: normal;
+}
+input {
+  max-width: 280px;
+}
+select {
+  max-width: 280px;
+}
+textarea {
+  max-width: 280px;
+}
 span.field-validation-error {
-    color: red;
-    font-weight: bold;
+  color: red;
+  font-weight: bold;
 }
-
-
-.voffset{margin-top:2px}
-.voffset1{margin-top:5px}
-.voffset2{margin-top:10px}
-.voffset3{margin-top:20px}
-.voffset4{margin-top:40px}
-.voffset5{margin-top:80px}
-
-/*BootStrap custom changes*/
-
-.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
-    background-color: rgba(51, 122, 183, 1)
+.voffset {
+  margin-top: 2px;
 }
-.navbar-brand {font-weight: 700}
-
+.voffset1 {
+  margin-top: 5px;
+}
+.voffset2 {
+  margin-top: 10px;
+}
+.voffset3 {
+  margin-top: 20px;
+}
+.voffset4 {
+  margin-top: 40px;
+}
+.voffset5 {
+  margin-top: 80px;
+}
+.navbar-inverse .navbar-nav > .open > a {
+  background-color: #337ab7;
+}
+.navbar-inverse .navbar-nav > .open > a:hover {
+  background-color: #337ab7;
+}
+.navbar-inverse .navbar-nav > .open > a:focus {
+  background-color: #337ab7;
+}
 .navbar-inverse .notification {
-    position: relative;
+  position: relative;
 }
-    .navbar-inverse .notification .badge {
-        position: absolute;
-        top: 8px;
-        right: -1px;
-    }
-body{ font-size: 17px;}
-
-body,h1,h2,h3,h4,h5,h6 {
-    font-family: Lato,"Helvetica Neue", Helvetica, Arial, sans-serif;
+.navbar-inverse .notification .badge {
+  position: absolute;
+  top: 8px;
+  right: -1px;
 }
-
-.form-group { margin-bottom: 20px; }
+.navbar-brand {
+  font-weight: 700;
+}
+h1 {
+  font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+h2 {
+  font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+h3 {
+  font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+h4 {
+  font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+h5 {
+  font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+h6 {
+  font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.form-group {
+  margin-bottom: 20px;
+}
 .form-control {
-    font-size: 17px;
-  height:44px
-    -ms-border-radius: 9px;
-    border-radius: 9px;
+  font-size: 17px;
+  height: 44px;
+  -ms-border-radius: 9px;
+  border-radius: 9px;
 }
-
+.popover {
+  _-webkit-box-shadow: none;
+  box-shadow: none;
+}
 .btn {
-    /*font-size: 17px;
-    padding: 7px 22px;*/
-    -ms-border-radius: 9px;
-    border-radius: 9px;
+  -ms-border-radius: 9px;
+  border-radius: 9px;
 }
-
-/*Page-level styles*/
-.gigs{ list-style: none;}
-.gigs > li .date {
-    background: red;
-    color: white;
-    text-align: center;
-    width: 60px;
-    border-radius: 9px;
+.gigs {
+  list-style: none;
 }
 .gigs > li {
-    position: relative;
-    margin-bottom: 30px;
+  position: relative;
+  margin-bottom: 30px;
+}
+.gigs > li .date {
+  background: red;
+  color: white;
+  text-align: center;
+  width: 60px;
+  border-radius: 9px;
+}
+.gigs > li .date .month {
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 2px 6px;
+}
+.gigs > li .date .day {
+  background: #f7f7f7;
+  color: black;
+  font-size: 20px;
+  padding: 6px 12px;
 }
 .gigs > li .details {
-    position: absolute;
-    top: 0px;
-    left: 70px;
-    width: 135px;
+  position: absolute;
+  top: 0px;
+  left: 70px;
+  width: 135px;
 }
 .gigs > li .details .artist {
-
-    font-weight: bold;display: block;
+  font-weight: bold;
+  display: block;
 }
-    .gigs > li .details .genre{font-size:14px}
-    
-    
-    .gigs > li .date .month {
-        text-transform: uppercase;
-        font-size: 14px;
-        font-weight: bold;
-        padding: 2px 6px;
-    }
-
-    .gigs > li .date .day {
-        background: #f7f7f7;
-        color: black;
-        font-size: 20px;
-        padding: 6px 12px;
-    }
-
-    .gigs > li .action {
-
-        font-size: 15px;
-        display:none
-    }
-
-    .gigs > li:hover .action {
-        display: block;
-    }
+.gigs > li .details .genre {
+  font-size: 14px;
+}
+.gigs > li .action {
+  font-size: 15px;
+  display: none;
+}
+.gigs > li:hover .action {
+  display: block;
+}
+.popover-notifications .popover-content {
+  padding: 0px;
+}
+.popover-content ul.notifications {
+  list-style: none;
+  padding-left: 0px;
+}
+.popover-content ul.notifications > li {
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+}
+.popover-content ul.notifications > li:last-child {
+  border-bottom: none;
+}
+.popover-content ul.notifications .highlight {
+  font-weight: bold;
+}
