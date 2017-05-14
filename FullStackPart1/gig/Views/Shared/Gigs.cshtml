@@ -1,4 +1,6 @@
-﻿@model GigHub.ViewModels.GigsViewModel
+﻿@using System.Web.UI.WebControls
+@using GigHub.Models
+@model GigHub.ViewModels.GigsViewModel
 
 @{
     ViewBag.Title = "Home Page";
@@ -6,6 +8,18 @@
 
 
 <h2>@Model.Heading</h2>
+@using (Html.BeginForm("Search", "Gigs"))
+{
+    <div class="form-group">
+        <div class="input-group SaerchGigs">
+        @Html.TextBoxFor(m => m.SearchTerm, new {@class = "form-control" ,@placeholder= "Search by Artist Genre Venue ..." })
+        <span class="input-group-addon">
+            <i class="glyphicon glyphicon-search"></i>
+        </span>
+    </div>
+   
+    </div>
+}
 <ul class="gigs voffset4">
     @foreach (var gig in Model.UpComingGigs)
     {
@@ -22,8 +36,8 @@
             </div>
             <div class="details">
                 <span class="artist">
-                    @gig.Artist.Name
-                    
+   
+                    <a href="@Url.Action("Details","Gigs",new {id=gig.id})" >@gig.Artist.Name</a>
                    @if (gig.Iscanceled)
                    {
                        
@@ -42,7 +56,8 @@
                 </span>
                 @if (Model.ShowAction && !gig.Iscanceled)
                 {
-                    <button data-gig-id="@gig.id" class="btn btn-default btn-sm pull-right js-toggle-attendance">Going?</button>
+                    <button data-gig-id="@gig.id" class="btn @(Model.Attendance.Contains(gig.id) ? "btn-info" : "btn-default") 
+                            btn-sm pull-right js-toggle-attendance">Going?</button>
 
                 }
             </div>
@@ -58,21 +73,42 @@
             $(".js-toggle-attendance").click(function(e) {
 
                 var button = $(e.target);
-                $.post("/api/Attendances", { GigId:button.attr("data-gig-id")})
-                    .done(function() {
+                if (button.hasClass("btn-default")) {
+                    $.post("/api/Attendances", { GigId: button.attr("data-gig-id") })
+                        .done(function() {
 
-                        button.removeClass("btn-default")
-                            .addClass("btn-info")
-                            .text("Going");
+                            button.removeClass("btn-default")
+                                .addClass("btn-info")
+                                .text("Going");
+                        }).fail(function() {
+                            alert("Sonthing failed!");
+                        });
+                } else {
+
+                    $.ajax({
+                        url: "/api/Attendances/" + button.attr("data-gig-id"),
+                        method: "DELETE"
+
+                    }).done(function() {
+                        button.addClass("btn-default")
+                            .removeClass("btn-info")
+                            .text("Going?");
+
                     }).fail(function() {
+
                         alert("Sonthing failed!");
+
                     });
+
+
+                }
+
             });
 
             $(".js-toggle-Follow").click(function(e) {
 
                 var button = $(e.target);
-                $.post("/api/Followings", { FolloweeId:button.attr("data-gig-id")})
+                $.post("/api/Followings", { FolloweeId: button.attr("data-gig-id") })
                     .done(function() {
 
                         button.removeClass("btn-default")
@@ -85,6 +121,6 @@
         });
 
     </script>
-    
+
 
 }
