@@ -50,18 +50,20 @@ namespace GigHub.Models
         }
 
 
-        public void Modify(GigFormViewModel viewModel)
+        public void Modify(DateTime dateTime, string venue, byte genre)
         {
 
             var notification = Notification.GigUpdate(this, DateTime, Venue);
-            Venue = viewModel.Venue;
-            DateTime = viewModel.GetDateTime();
-            GenreID = viewModel.Genre;
+            Venue = venue;
+            DateTime = dateTime;
+            GenreID = genre;
 
             foreach (var attendee in Attendance.Select(a => a.Attendee))
             {
                 attendee.Notify(notification);
             }
         }
+
+
     }
 }

@@ -6,7 +6,8 @@ using Microsoft.AspNet.Identity;
 
 namespace GigHub.Controllers.API
 {
-    public partial class FollowingsController : ApiController
+    [Authorize]
+    public class FollowingsController : ApiController
     {
 
         public ApplicationDbContext _context { get; set; }
@@ -16,7 +17,25 @@ namespace GigHub.Controllers.API
             _context = new ApplicationDbContext();
         }
 
+        [HttpDelete]
+        public IHttpActionResult unFollow(string id)
+        {
 
+            var userid = User.Identity.GetUserId();
+
+            var follower =
+                _context.Followings.SingleOrDefault(f => f.FollowerId == userid && f.FolloweeId == id);
+            if (follower == null)
+            {
+                return NotFound();
+            }
+            _context.Followings.Remove(follower);
+            _context.SaveChanges();
+            return Ok();
+
+        }
+
+        [HttpPost]
         public IHttpActionResult Follow(FollowingDto Dto)
         {
             var userid = User.Identity.GetUserId();

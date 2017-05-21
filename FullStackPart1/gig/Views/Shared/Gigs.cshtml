@@ -20,7 +20,7 @@
    
     </div>
 }
-<ul class="gigs voffset4">
+<ul id="gigs" class="gigs voffset4">
     @foreach (var gig in Model.UpComingGigs)
     {
        
@@ -68,57 +68,10 @@
 @section scripts
 {
     <script>
-        $(document).ready(function() {
 
-            $(".js-toggle-attendance").click(function(e) {
-
-                var button = $(e.target);
-                if (button.hasClass("btn-default")) {
-                    $.post("/api/Attendances", { GigId: button.attr("data-gig-id") })
-                        .done(function() {
-
-                            button.removeClass("btn-default")
-                                .addClass("btn-info")
-                                .text("Going");
-                        }).fail(function() {
-                            alert("Sonthing failed!");
-                        });
-                } else {
-
-                    $.ajax({
-                        url: "/api/Attendances/" + button.attr("data-gig-id"),
-                        method: "DELETE"
-
-                    }).done(function() {
-                        button.addClass("btn-default")
-                            .removeClass("btn-info")
-                            .text("Going?");
-
-                    }).fail(function() {
-
-                        alert("Sonthing failed!");
-
-                    });
+            GigConrollers.init("#gigs");
 
 
-                }
-
-            });
-
-            $(".js-toggle-Follow").click(function(e) {
-
-                var button = $(e.target);
-                $.post("/api/Followings", { FolloweeId: button.attr("data-gig-id") })
-                    .done(function() {
-
-                        button.removeClass("btn-default")
-                            .addClass("btn-info")
-                            .text("Following");
-                    }).fail(function() {
-                        alert("Sonthing failed!");
-                    });
-            });
-        });
 
     </script>
 
