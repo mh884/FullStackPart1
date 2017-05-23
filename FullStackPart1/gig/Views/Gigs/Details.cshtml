@@ -1,4 +1,4 @@
-﻿@model GigHub.ViewModels.GigDetailsViewModel
+﻿@model GigHub.Core.ViewModels.GigDetailsViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -12,10 +12,10 @@
     {
         if (Model.IsFollowing)
         {
-            <button data-gig-id="@Model.Gig.ArtistID" class="btn btn-info js-toggle-Follow">Follow</button>
+            <button data-gig-id="@Model.Gig.ArtistId" class="btn btn-info js-toggle-Follow">Follow</button>
         }
         else
-        {   <button data-gig-id="@Model.Gig.ArtistID" class="btn btn-default js-toggle-Follow">Following</button> }
+        {   <button data-gig-id="@Model.Gig.ArtistId" class="btn btn-default js-toggle-Follow">Following</button> }
 
     }
   

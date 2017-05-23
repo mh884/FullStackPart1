@@ -1,7 +1,8 @@
 ﻿using System.Linq;
 using System.Web.Http;
-using GigHub.Dto;
-using GigHub.Models;
+using GigHub.Core.Dto;
+using GigHub.Core.Models;
+using GigHub.Presistence;
 using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
 

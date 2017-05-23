@@ -1,6 +1,5 @@
 ﻿@using System.Web.UI.WebControls
-@using GigHub.Models
-@model GigHub.ViewModels.GigsViewModel
+@model GigHub.Core.ViewModels.GigsViewModel
 
 @{
     ViewBag.Title = "Home Page";
@@ -47,7 +46,7 @@
                     @if (Model.ShowAction)
                     {
                         
-                        <button data-gig-id="@gig.ArtistID" class="btn btn-link  btn-sm pull-right js-toggle-Follow">Follow</button>
+                        <button data-gig-id="@gig.ArtistId" class="btn btn-link  btn-sm pull-right js-toggle-Follow">Follow</button>
 
                     }
                 </span>

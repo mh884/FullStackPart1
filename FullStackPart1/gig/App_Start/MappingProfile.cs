@@ -1,8 +1,8 @@
 ﻿
 using AutoMapper;
 using GigHub.Controllers.API;
-using GigHub.Dto;
-using GigHub.Models;
+using GigHub.Core.Dto;
+using GigHub.Core.Models;
 
 namespace GigHub.App_Start
 {

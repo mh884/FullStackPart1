@@ -5,7 +5,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using GigHub.Models;
+using GigHub.Core.Models;
+using GigHub.Presistence;
 using Microsoft.AspNet.Identity;
 
 namespace GigHub.Controllers.API
@@ -25,7 +26,7 @@ namespace GigHub.Controllers.API
             var UserID = User.Identity.GetUserId();
             var gig = _context.Gigs
                 .Include(g => g.Attendance.Select(a => a.Attendee))
-                .Single(g => g.id == id && g.ArtistID == UserID);
+                .Single(g => g.id == id && g.ArtistId == UserID);
 
             if (gig.Iscanceled)
             {

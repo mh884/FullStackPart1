@@ -1,5 +1,6 @@
 ﻿using System;
-using GigHub.Models;
+using GigHub.Core.Models;
+using GigHub.Presistence;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
