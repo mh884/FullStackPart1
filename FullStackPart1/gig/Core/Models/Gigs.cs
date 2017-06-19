@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace GigHub.Core.Models
 {
-    public class gig
+    public class Gigs
     {
         public int id { get; set; }
 
@@ -29,7 +29,7 @@ namespace GigHub.Core.Models
         public ICollection<Attendance> Attendance { get; private set; }
 
 
-        public gig()
+        public Gigs()
         {
             Attendance = new Collection<Attendance>();
         }

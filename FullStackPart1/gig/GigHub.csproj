@@ -242,6 +242,7 @@
     <Compile Include="Presistence\EntityConfigrations\GenreConfiguration.cs" />
     <Compile Include="Presistence\EntityConfigrations\GigConfiguration.cs" />
     <Compile Include="Presistence\EntityConfigrations\UserNotificationConfiguration.cs" />
+    <Compile Include="Presistence\IApplicationDbContext.cs" />
     <Compile Include="Presistence\Migrations\201704071642493_CreateTable.cs" />
     <Compile Include="Presistence\Migrations\201704071642493_CreateTable.Designer.cs">
       <DependentUpon>201704071642493_CreateTable.cs</DependentUpon>
@@ -279,7 +280,7 @@
     <Compile Include="Core\Models\Attendance.cs" />
     <Compile Include="Core\Models\Following.cs" />
     <Compile Include="Core\Models\Genre.cs" />
-    <Compile Include="Core\Models\gig.cs" />
+    <Compile Include="Core\Models\Gigs.cs" />
     <Compile Include="Core\Models\ApplicationUser.cs" />
     <Compile Include="Core\ViewModels\ManageViewModels.cs" />
     <Compile Include="Core\Models\Notification.cs" />

@@ -46,7 +46,7 @@
                     @if (Model.ShowAction)
                     {
                         
-                        <button data-gig-id="@gig.ArtistId" class="btn btn-link  btn-sm pull-right js-toggle-Follow">Follow</button>
+                        <button data-Gigs-id="@gig.ArtistId" class="btn btn-link  btn-sm pull-right js-toggle-Follow">Follow</button>
 
                     }
                 </span>
@@ -55,7 +55,7 @@
                 </span>
                 @if (Model.ShowAction && !gig.Iscanceled)
                 {
-                    <button data-gig-id="@gig.id" class="btn @(Model.Attendance.Contains(gig.id) ? "btn-info" : "btn-default") 
+                    <button data-Gigs-id="@gig.id" class="btn @(Model.Attendance.Contains(gig.id) ? "btn-info" : "btn-default") 
                             btn-sm pull-right js-toggle-attendance">Going?</button>
 
                 }
@@ -68,7 +68,7 @@
 {
     <script>
 
-            GigConrollers.init("#gigs");
+            GigConrollers.init("#Gigss");
 
 
 

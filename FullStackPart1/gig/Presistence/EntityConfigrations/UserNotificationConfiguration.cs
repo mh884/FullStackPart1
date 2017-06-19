@@ -12,9 +12,13 @@ namespace GigHub.Presistence.EntityConfigrations
 
         public UserNotificationConfiguration()
         {
-            HasKey(u => u.UserId).Property(u => u.UserId).HasColumnOrder(columnOrder: 1);
+            HasKey(u => u.UserId)
+                .Property(u => u.UserId)
+                .HasColumnOrder(columnOrder: 1);
 
-            HasKey(u => u.NotificationId).Property(u => u.NotificationId).HasColumnOrder(columnOrder: 2);
+            HasKey(u => u.NotificationId)
+                .Property(u => u.NotificationId)
+                .HasColumnOrder(columnOrder: 2);
         }
     }
 }

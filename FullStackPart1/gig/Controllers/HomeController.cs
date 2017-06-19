@@ -23,7 +23,7 @@ namespace GigHub.Controllers
         }
         public ActionResult Index(string query = null)
         {
-            var upcomingGigs = _unitOfWork.Gig.UpConmingGigs(query);
+            var upcomingGigs = _unitOfWork.Gigs.UpConmingGigs(query);
 
 
 

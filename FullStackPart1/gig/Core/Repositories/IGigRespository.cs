@@ -5,11 +5,11 @@ namespace GigHub.Core.Repositories
 {
     public interface IGigRespository
     {
-        gig GetGigWithAttendees(int gigid);
-        gig GetGigs(int id);
-        IEnumerable<gig> GetGigsUserAttending(string userid);
-        object GetUpComingGigsByArtist(string userId);
-        void Add(gig gig);
-        IEnumerable<gig> UpConmingGigs(string query = null);
+        Gigs GetGigWithAttendees(int gigid);
+        Gigs GetGigs(int id);
+        IEnumerable<Gigs> GetGigsUserAttending(string userid);
+        IEnumerable<object> GetUpComingGigsByArtist(string userId);
+        void Add(Gigs gigs);
+        IEnumerable<Gigs> UpConmingGigs(string query = null);
     }
 }

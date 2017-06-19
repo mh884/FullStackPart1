@@ -5,7 +5,7 @@ using GigHub.Core.Models;
 
 namespace GigHub.Presistence.EntityConfigrations
 {
-    public class GigConfiguration : EntityTypeConfiguration<gig>
+    public class GigConfiguration : EntityTypeConfiguration<Gigs>
     {
 
         public GigConfiguration()
@@ -23,7 +23,7 @@ namespace GigHub.Presistence.EntityConfigrations
 
 
             HasMany(g => g.Attendance)
-                .WithRequired(a => a.Gig)
+                .WithRequired(a => a.Gigs)
             .WillCascadeOnDelete(false);
         }
 

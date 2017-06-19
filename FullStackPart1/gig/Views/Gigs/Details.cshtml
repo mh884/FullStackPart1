@@ -7,22 +7,22 @@
 <div id="DivFollow">
     
 
-<h2>@Model.Gig.Artist.Name
+<h2>@Model.Gigs.Artist.Name
     @if (User.Identity.IsAuthenticated)
     {
         if (Model.IsFollowing)
         {
-            <button data-gig-id="@Model.Gig.ArtistId" class="btn btn-info js-toggle-Follow">Follow</button>
+            <button data-Gigs-id="@Model.Gigs.ArtistId" class="btn btn-info js-toggle-Follow">Follow</button>
         }
         else
-        {   <button data-gig-id="@Model.Gig.ArtistId" class="btn btn-default js-toggle-Follow">Following</button> }
+        {   <button data-Gigs-id="@Model.Gigs.ArtistId" class="btn btn-default js-toggle-Follow">Following</button> }
 
     }
   
 </h2>
 </div>
 <span>
-    <p>Performing At @Model.Gig.Venue on @Model.Gig.DateTime.ToString("f")</p>
+    <p>Performing At @Model.Gigs.Venue on @Model.Gigs.DateTime.ToString("f")</p>
 </span>
 
     @if (User.Identity.IsAuthenticated && Model.IsAttending)

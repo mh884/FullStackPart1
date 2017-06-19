@@ -5,7 +5,7 @@ namespace GigHub.Core.Models
 {
     public class Attendance
     {
-        public gig Gig { get; set; }
+        public Gigs Gigs { get; set; }
         public ApplicationUser Attendee { get; set; }
 
         public int gigId { get; set; }

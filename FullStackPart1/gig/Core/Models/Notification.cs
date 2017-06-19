@@ -18,36 +18,31 @@ namespace GigHub.Core.Models
         public string OrginalVenue { get; private set; }
 
         [Required]
-        public gig Gig { get; set; }
+        public Gigs Gigs { get; set; }
 
 
-        private Notification()
-        {
-
-        }
-
-        private Notification(gig gig, NotificationType notificationType)
+        public Notification(Gigs gigs, NotificationType notificationType)
         {
             DateTime = DateTime.Now;
-            Gig = gig ?? throw new ArgumentNullException(nameof(gig));
+            Gigs = gigs ?? throw new ArgumentNullException(nameof(gigs));
             Type = notificationType;
         }
 
-        private Notification(gig gig, NotificationType notificationType, DateTime orginalDateTime, string orginalVenue)
+        private Notification(Gigs gigs, NotificationType notificationType, DateTime orginalDateTime, string orginalVenue)
         {
             DateTime = DateTime.Now;
-            Gig = gig ?? throw new ArgumentNullException(nameof(gig));
+            Gigs = gigs ?? throw new ArgumentNullException(nameof(gigs));
             OrginalDateTime = orginalDateTime;
             OrginalVenue = orginalVenue;
             Type = notificationType;
         }
 
-        public static Notification GigCreate(gig gig)
+        public static Notification GigCreate(Gigs gigs)
         {
-            return new Notification(gig, NotificationType.GigCreate);
+            return new Notification(gigs, NotificationType.GigCreate);
 
         }
-        public static Notification GigUpdate(gig newgig, DateTime orginalDateTime, string orginalVenue)
+        public static Notification GigUpdate(Gigs newgig, DateTime orginalDateTime, string orginalVenue)
         {
             var notification = new Notification(newgig, NotificationType.GigCreate)
             {
@@ -57,9 +52,9 @@ namespace GigHub.Core.Models
             return notification;
         }
 
-        public static Notification GigCancel(gig gig)
+        public static Notification GigCancel(Gigs gigs)
         {
-            return new Notification(gig, NotificationType.GigCanceled);
+            return new Notification(gigs, NotificationType.GigCanceled);
 
         }
     }

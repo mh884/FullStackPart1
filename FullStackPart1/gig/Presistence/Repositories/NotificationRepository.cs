@@ -1,9 +1,7 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
-using GigHub.Core.Dto;
 using GigHub.Core.Models;
 using GigHub.Core.Repositories;
 
@@ -11,9 +9,9 @@ namespace GigHub.Presistence.Repositories
 {
     public class NotificationRepository : INotificationRepository
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IApplicationDbContext _context;
 
-        public NotificationRepository(ApplicationDbContext context)
+        public NotificationRepository(IApplicationDbContext context)
         {
             _context = context;
         }
@@ -24,7 +22,7 @@ namespace GigHub.Presistence.Repositories
             return _context.UserNotifications
                 .Where(u => u.UserId == userId && !u.IsRead)
                 .Select(n => n.Notification)
-                .Include(a => a.Gig.Artist)
+                .Include(a => a.Gigs.Artist)
                 .ToList();
 
         }

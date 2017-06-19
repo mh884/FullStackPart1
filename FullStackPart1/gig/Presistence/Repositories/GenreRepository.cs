@@ -20,9 +20,9 @@ namespace GigHub.Presistence.Repository
             return _context.Genres.ToList(); ;
         }
 
-        public void Add(gig gig)
+        public void Add(Gigs gigs)
         {
-            _context.Gigs.Add(gig);
+            _context.Gigs.Add(gigs);
         }
     }
 }

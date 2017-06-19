@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Web.Http;
+using GigHub.Core;
 using GigHub.Core.Dto;
 using GigHub.Core.Models;
 using GigHub.Presistence;
@@ -11,25 +12,26 @@ namespace GigHub.Controllers.API
     [Authorize]
     public class AttendancesController : ApiController
     {
-        private ApplicationDbContext _context;
+        private IUnitOfWork _unitOfWork;
 
-        public AttendancesController()
+        public AttendancesController(IUnitOfWork unitOfWork)
         {
-            _context = new ApplicationDbContext();
+            _unitOfWork = unitOfWork;
 
         }
 
         [HttpPost]
-        public IHttpActionResult Attend(AttendanceDto Dto)
+        public IHttpActionResult Attend(AttendanceDto dto)
         {
             var userId = User.Identity.GetUserId();
 
-            if (_context.Attendances.Any(a => a.AttendeeId == userId && a.gigId == Dto.GigId))
+            var any = _unitOfWork.Attendance.GetAttendance(userId, dto.GigId).Any();
+            if (any)
                 return BadRequest("The attendance already exists");
 
-            var attendance = new Attendance { gigId = Dto.GigId, AttendeeId = userId };
-            _context.Attendances.Add(attendance);
-            _context.SaveChanges();
+            var attendance = new Attendance { gigId = dto.GigId, AttendeeId = userId };
+            _unitOfWork.Attendance.Add(attendance);
+            _unitOfWork.Complate();
 
             return Ok();
         }
@@ -38,15 +40,15 @@ namespace GigHub.Controllers.API
         [HttpDelete]
         public IHttpActionResult RemoveAttend(int id)
         {
-            var userID = User.Identity.GetUserId();
-            var attend = _context.Attendances.SingleOrDefault(a => a.gigId == id && a.AttendeeId == userID);
+            var userId = User.Identity.GetUserId();
+            var attend = _unitOfWork.Attendance.GetAttendance(userId, id).SingleOrDefault();
             if (attend == null)
             {
                 return NotFound();
             }
 
-            _context.Attendances.Remove(attend);
-            _context.SaveChanges();
+            _unitOfWork.Attendance.Remove(attend);
+            _unitOfWork.Complate();
             return Ok();
 
 

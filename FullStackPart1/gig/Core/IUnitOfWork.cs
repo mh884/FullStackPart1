@@ -5,7 +5,7 @@ namespace GigHub.Core
 {
     public interface IUnitOfWork
     {
-        IGigRespository Gig { get; }
+        IGigRespository Gigs { get; }
         IAttendanceRepository Attendance { get; }
         IFollowingRepository Following { get; }
         IGenreRepository Genre { get; }

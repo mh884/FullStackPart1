@@ -18,12 +18,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            @Html.ActionLink("GigHubs", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
+            @Html.ActionLink("GigssHubs", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
          
-                <li>@Html.ActionLink("Add a Gigs", "Create", "Gigs")</li>
+                <li>@Html.ActionLink("Add a Gigsss", "Create", "Gigs")</li>
 
             </ul>
             @Html.Partial("_LoginPartial")
@@ -49,26 +49,26 @@
          _.each(notifications,function(notification)
         {
             if(notification.type==1){%>
-                <li><sapn class="highlight"><%=notification.gig.artist.name%></sapn> has canceled the gig at <%=notification.gig.venue%> at <%=moment(notification.gig.dateTime).format("D MMM HH:mm")%> </li>
+                <li><sapn class="highlight"><%=notification.Gigs.artist.name%></sapn> has canceled the Gigs at <%=notification.Gigs.venue%> at <%=moment(notification.Gigs.dateTime).format("D MMM HH:mm")%> </li>
 
     <%}   else  if(notification.type==2){
     var changes=[],
         newValue=[],
         originalValue =[];
 
-    if(notification.originalVenue != notification.gig.venue)
+    if(notification.originalVenue != notification.Gigs.venue)
     {changes.push('venue');
-    newValue.push(notification.gig.venue);
+    newValue.push(notification.Gigs.venue);
     originalValue.push(notification.originalVenue);
     }
-    if(notification.originalDateTime != notification.gig.dateTime)
+    if(notification.originalDateTime != notification.Gigs.dateTime)
     {changes.push('Date/Time');
-    newValue.push(moment(notification.gig.datetime).format("D MMM HH:mm"));
+    newValue.push(moment(notification.Gigs.datetime).format("D MMM HH:mm"));
     originalValue.push(moment(notification.originalDateTime).format("D MMM HH:mm"));
     }
     %>
 <li>
-    <sapn class="highlight"> <%= notification.gig.artist.name %></sapn> has changed the <%= changes.join(' and ')%> from  <%=originalValue.join('/') %> to <%=newValue.join('/')  %>
+    <sapn class="highlight"> <%= notification.Gigs.artist.name %></sapn> has changed the <%= changes.join(' and ')%> from  <%=originalValue.join('/') %> to <%=newValue.join('/')  %>
 
 </li>
     <%

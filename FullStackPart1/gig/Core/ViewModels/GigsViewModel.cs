@@ -6,7 +6,7 @@ namespace GigHub.Core.ViewModels
 {
     public class GigsViewModel
     {
-        public IEnumerable<gig> UpComingGigs { get; set; }
+        public IEnumerable<Gigs> UpComingGigs { get; set; }
         public bool ShowAction { get; set; }
         public string Heading { get; set; }
         public string SearchTerm { get; set; }

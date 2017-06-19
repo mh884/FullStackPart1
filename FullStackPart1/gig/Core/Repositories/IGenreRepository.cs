@@ -6,6 +6,6 @@ namespace GigHub.Core.Repositories
     public interface IGenreRepository
     {
         IEnumerable<Genre> GetGenre();
-        void Add(gig gig);
+        void Add(Gigs gigs);
     }
 }

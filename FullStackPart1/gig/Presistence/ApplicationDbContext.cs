@@ -5,14 +5,16 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace GigHub.Presistence
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+
+
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplicationDbContext
     {
         public ApplicationDbContext()
             : base("DefaultConnection", false)
         {
         }
 
-        public DbSet<gig> Gigs { get; set; }
+        public DbSet<Gigs> Gigs { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Attendance> Attendances { get; set; }
 

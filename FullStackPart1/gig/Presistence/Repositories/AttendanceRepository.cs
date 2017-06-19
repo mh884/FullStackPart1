@@ -22,7 +22,18 @@ namespace GigHub.Presistence.Repository
         public IEnumerable<Attendance> GetAttendance(string userid, int gigId)
         {
             return _context.Attendances.Where(a => a.gigId == gigId && a.AttendeeId == userid);
-            ;
+        }
+
+        public void Add(Attendance attendance)
+        {
+            _context.Attendances.Add(attendance);
+        }
+
+
+        public void Remove(Attendance attendance)
+        {
+            _context.Attendances.Remove(attendance);
+
         }
     }
 }

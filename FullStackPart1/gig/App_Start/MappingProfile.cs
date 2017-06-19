@@ -14,7 +14,7 @@ namespace GigHub.App_Start
 
 
             Mapper.CreateMap<ApplicationUser, UserDto>();
-            Mapper.CreateMap<gig, gigDto>();
+            Mapper.CreateMap<Gigs, gigDto>();
             Mapper.CreateMap<Notification, NotificationDto>();
 
         }
